@@ -1,0 +1,33 @@
+<table >
+    <thead >
+        <tr >
+            <th> Name  </th>
+            <th> Phone </th>
+            <th> Email </th>
+            <th >  Options </th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody  >
+        <% @user.each do |x| %>
+        <tr>
+            <td> <%=x.name%> </td>
+            <td> <%=x.phone%> </td>
+            <td> <%=x.email%> </td>
+            <td> <%= link_to controller: "users", action: "new"  do%> 
+            Add
+            <%end%> </td>
+            <td> <%= link_to controller: "users", action: "edit", id:x.id  do%> 
+            Edit 
+            <%end%> </td>
+            <td>
+            <%=link_to controller: "users", action: "destroy", id:x.id, data: { confirm: 
+            'Are You Sure To Remove This Record?' } do%>
+            Delete 
+            <%end%> </td>        
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<td> <%= link_to controller: "users", action: "new"  do%> Add <%end%> </td>

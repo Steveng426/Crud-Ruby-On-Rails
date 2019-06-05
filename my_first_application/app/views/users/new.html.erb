@@ -1,0 +1,33 @@
+<% if @user.id==nil %>
+  <%@action_name="create"%>
+<%else%>
+  <%@action_name="update"%>
+<% end %>
+<div class="container" align="center" >
+    <legend class="text-center header">Register</legend>
+
+        <%=form_for :user,  url:@action_name do |f| %>
+            <div class="form-group" >
+                <%=f.text_field :name, placeholder: "Enter your name", :required => true,  class:"form-control" %>   
+            </div>
+            <div class="form-group">
+                <%=f.text_field :phone, placeholder: "Enter your phone", :required => true,  class:"form-control" %>   
+            </div>
+            <div class="form-group">
+                <%=f.text_field :email, placeholder: "Enter your email", :required => true,  class:"form-control" %>   
+            </div>
+            <div class="form-group">
+            <%if @user.id==nil %>
+                <input class="btn btn-primary btn-block " type="submit" value="Add"/>
+              <%else %>
+              <%=f.hidden_field :id %>
+                <input class="btn btn-primary btn-block " type="submit" value="Update"/> 
+            <% end %>
+            </div>        
+    </div>
+    <% end %>
+
+    <div class="form-group">
+    <%= link_to "return", users_index_path, class: "btn btn-secondary" %>
+    </div>
+</div>
